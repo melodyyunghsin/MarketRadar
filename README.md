@@ -1,4 +1,4 @@
-# Stock Impact Analyzer
+# MarketRadar: In-Browser Stock News Analysis with Historical Prediction Context
 
 A browser extension that analyzes financial news articles and predicts how the news will move specified stocks. It runs a two-step LLM pipeline — causal factor extraction followed by horizon-specific direction prediction — using Google's Gemini. (A local-model backend via Ollama also exists in the code but is disabled in the UI; see [Local Models](#local-models-advanced).)
 
