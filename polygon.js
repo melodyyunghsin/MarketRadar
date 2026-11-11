@@ -44,8 +44,12 @@ async function fetchRawSeries(ticker, articleDate) {
 
   function coversDate(cached) {
     if (!cached || cached.error || !cached.series || cached.series.length === 0) return false;
-    const diffDays = (new Date(articleDateOnly) - new Date(cached.series[0].date)) / 86400000;
-    return diffDays <= 5;
+    // series is newest-first (sort=desc): [0] is the newest bar, the last entry the oldest
+    const newestDiff = (new Date(articleDateOnly) - new Date(cached.series[0].date)) / 86400000;
+    const oldestDiff = (new Date(articleDateOnly) - new Date(cached.series[cached.series.length - 1].date)) / 86400000;
+    // 5-day margin above the oldest bar keeps a few trading days of history below
+    // the article date even across weekends/holidays
+    return newestDiff <= 5 && oldestDiff >= 5;
   }
 
   if (memCache[ticker]) {

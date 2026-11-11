@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Stock Predictor with News Analysis",
+  "name": "MarketRadar",
   "version": "0.5.0",
   "description": "Analyzes news articles and predicts stock impacts.",
   "permissions": ["activeTab", "scripting", "storage"],
